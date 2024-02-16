@@ -1,5 +1,8 @@
 from django.db import models
 
+
+
+
 # Создаем модель product, которая хранит информацию о продукте
 class Product(models.Model):
     # У каждого продукта есть название, описание, цена, изображение и категория
@@ -14,7 +17,7 @@ class Product(models.Model):
         return self.name
 
 # Создаем модель maker, которая хранит информацию о производителе продукта
-class Seller(models.Model):
+class Maker(models.Model):
     # У каждого производителя есть название, адрес, телефон и сайт
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=200)

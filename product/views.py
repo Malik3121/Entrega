@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .models import Product, Maker, Category
-from .serializers import ProductSerializer, MakerSerializer, CategorySerializer
+from .models import Product, Seller, Category
+from .serializer import ProductSerializer, SellerySerializer, CategorySerializer
 
 # Создаем представление для списка всех продуктов
 class ProductList(generics.ListAPIView):
@@ -19,17 +19,17 @@ class ProductDetail(generics.RetrieveAPIView):
 # Создаем представление для списка всех производителей
 class MakerList(generics.ListAPIView):
     # Указываем, что источником данных будет модель Maker
-    queryset = Maker.objects.all()
+    queryset = Seller.objects.all()
     # Указываем, что сериализатором будет MakerSerializer
-    serializer_class = MakerSerializer
+    serializer_class = SellerySerializer
 
 # Создаем представление для деталей одного производителя
 class MakerDetail(generics.RetrieveAPIView):
     # Указываем, что источником данных будет модель Maker
-    queryset = Maker.objects.all()
+    queryset = Seller.objects.all()
     # Указываем, что сериализатором будет MakerSerializer
-    serializer_class = MakerSerializer
-
+    serializer_class = SellerySerializer
+    
 # Создаем представление для списка всех категорий
 class CategoryList(generics.ListAPIView):
     # Указываем, что источником данных будет модель Category

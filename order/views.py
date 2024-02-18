@@ -5,7 +5,8 @@ from django.shortcuts import render
 # view.py
 from rest_framework import viewsets, permissions
 from .models import Order
-from .sereliezer import OrderSerializer
+from .serializers import OrderSerializer
+from rest_framework.permissions import IsAuthenticated
 
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()

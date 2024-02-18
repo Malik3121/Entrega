@@ -4,7 +4,7 @@ from django.db import models
 
 
 # Создаем модель product, которая хранит информацию о продукте
-class Product(models.Model):
+class ProductSerializer(models.Model):
     # У каждого продукта есть название, описание, цена, изображение и категория
     name = models.CharField(max_length=100)
     description = models.TextField()
@@ -17,7 +17,7 @@ class Product(models.Model):
         return self.name
 
 # Создаем модель maker, которая хранит информацию о производителе продукта
-class Maker(models.Model):
+class SellerySerializer(models.Model):
     # У каждого производителя есть название, адрес, телефон и сайт
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=200)
@@ -29,7 +29,7 @@ class Maker(models.Model):
         return self.name
 
 # Создаем модель category, которая хранит информацию о категории продукта
-class Category(models.Model):
+class CategorySerializer(models.Model):
     # У каждой категории есть название и описание
     name = models.CharField(max_length=100)
     description = models.TextField()

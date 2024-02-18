@@ -5,6 +5,7 @@ from django.db import models
 # models.py
 from django.db import models
 from django.contrib.auth.models import User
+from account.models import CustomUser
 
 # Create your models here.
 
@@ -29,9 +30,9 @@ class Order(models.Model):
     delivery_status = models.CharField(max_length=20, choices=DELIVERY_STATUS_CHOICES, default=NOT_PICKED_UP, verbose_name='Статус доставки')
 
     # Связи с пользователями
-    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders', verbose_name='Клиент')
-    courier = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='deliveries', verbose_name='Курьер')
-    admin = models.ForeignKey(User, on_delete=models.PROTECT, related_name='managed_orders', verbose_name='Администратор')
+    customer = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='orders', verbose_name='Клиент')
+    courier = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True, related_name='deliveries', verbose_name='Курьер')
+    admin = models.ForeignKey(CustomUser, on_delete=models.PROTECT, related_name='managed_orders', verbose_name='Администратор')
 
     def __str__(self):
         return f'Заказ №{self.id} от {self.customer.username}'
